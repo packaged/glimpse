@@ -21,7 +21,7 @@ namespace Packaged\Glimpse\Core;
 class HtmlTag implements ISafeHtmlProducer
 {
   protected $_tag;
-  protected $_attributes;
+  protected $_attributes = [];
   protected $_content;
 
   public static function create()
