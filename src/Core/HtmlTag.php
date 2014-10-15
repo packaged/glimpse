@@ -275,6 +275,10 @@ class HtmlTag implements ISafeHtmlProducer
       {
         $attrString .= ' ' . $k . '="' . SafeHtml::escape($v) . '"';
       }
+      else
+      {
+        $attrString .= ' ' . $k;
+      }
     }
 
     if($this->_content === null)

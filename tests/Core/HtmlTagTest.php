@@ -71,6 +71,14 @@ class HtmlTagTest extends \PHPUnit_Framework_TestCase
     $this->assertEquals('<div></div>', (string)HtmlTag::createTag('div'));
   }
 
+  public function testBooleanAttribute()
+  {
+    $this->assertEquals(
+      '<option selected></option>',
+      (string)HtmlTag::createTag('option', ['selected' => null])
+    );
+  }
+
   public function testTagJavascriptProtocolRejection()
   {
     $hrefs = [
