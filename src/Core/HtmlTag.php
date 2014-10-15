@@ -313,6 +313,14 @@ class HtmlTag implements ISafeHtmlProducer
 
   public function __toString()
   {
-    return (string)$this->produceSafeHTML();
+    try
+    {
+      $content = $this->produceSafeHTML();
+      return (string)$content;
+    }
+    catch(\Exception $e)
+    {
+      return $e->getMessage() . '<br/>' . nl2br($e->getTraceAsString());
+    }
   }
 }

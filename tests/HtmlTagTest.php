@@ -197,4 +197,10 @@ class HtmlTagTest extends \PHPUnit_Framework_TestCase
       }
     }
   }
+
+  public function testToStringException()
+  {
+    $tag = HtmlTag::createTag('a', ['href' => 'javascript:alert(\'Hi\');']);
+    $this->assertContains('Attempting to render a tag with an', (string)$tag);
+  }
 }
