@@ -71,62 +71,6 @@ class HtmlTagTest extends \PHPUnit_Framework_TestCase
     $this->assertEquals('<div></div>', (string)HtmlTag::createTag('div'));
   }
 
-  public function testDefaultRelNoreferrer()
-  {
-    $map = [
-      // These should not have rel="nofollow" inserted implicitly.
-      '/'                          => false,
-      '/path/to/local.html'        => false,
-      '#example'                   => false,
-      ''                           => false,
-      // These should get the implicit insertion.
-      'http://www.example.org/'    => true,
-      '///evil.com/'               => true,
-      '  http://www.example.org/'  => true,
-      'ftp://filez.com'            => true,
-      'mailto:santa@northpole.com' => true,
-      'tel:18005555555'            => true,
-    ];
-
-    foreach($map as $input => $expect)
-    {
-      $tag = HtmlTag::createTag(
-        'a',
-        [
-          'href' => $input,
-        ],
-        'link'
-      );
-
-      $tag = (string)$tag;
-      $this->assertEquals($expect, (bool)preg_match('/noreferrer/', $tag));
-    }
-
-    // With an explicit `rel` present, we should not override it.
-    $tag = HtmlTag::createTag(
-      'a',
-      [
-        'href' => 'http://www.example.org/',
-        'rel'  => 'nofollow',
-      ],
-      'link'
-    );
-
-    $this->assertFalse((bool)preg_match('/noreferrer/', (string)$tag));
-
-    // For tags other than `a`, we should not insert `rel`.
-    $tag = HtmlTag::createTag(
-      'link',
-      [
-        'href' => 'http://www.example.org/',
-      ],
-      'link'
-    );
-
-    $this->assertFalse((bool)preg_match('/noreferrer/', (string)$tag));
-  }
-
-
   public function testTagJavascriptProtocolRejection()
   {
     $hrefs = [

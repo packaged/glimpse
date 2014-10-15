@@ -216,23 +216,7 @@ class HtmlTag implements ISafeHtmlProducer
 
         // Is this a link to a resource on the same domain? The second part of
         // this excludes "///evil.com/" protocol-relative hrefs.
-        $isDomainHref = ($href[0] == '/') &&
-          (!isset($href[1]) || $href[1] != '/');
-
-        // If the `rel` attribute is not specified, fill in `rel="noreferrer"`.
-        // Effectively, this serves to make the default behavior for offsite
-        // links "do not send a  referrer", which is broadly desirable. Specifying
-        // some non-null `rel` will skip this.
-        if(!isset($this->_attributes['rel']))
-        {
-          if(!$isAnchorHref && !$isDomainHref)
-          {
-            if($this->_tag == 'a')
-            {
-              $this->_attributes['rel'] = 'noreferrer';
-            }
-          }
-        }
+        $isDomainHref = ($href[0] == '/') && (!isset($href[1]) || $href[1] != '/');
 
         // Block 'javascript:' hrefs at the tag level: no well-designed
         // application should ever use them, and they are a potent attack vector.
