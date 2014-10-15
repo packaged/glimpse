@@ -7,9 +7,10 @@ class Link extends HtmlTag
 {
   protected $_tag = 'a';
 
-  public function __construct($uri)
+  public function __construct($uri, $content = null)
   {
     $this->setAttribute('href', $uri);
+    $this->setContent($content);
   }
 
   /**

@@ -9,6 +9,11 @@ class LinkTest extends \PHPUnit_Framework_TestCase
   {
     $link = new Link('http://www.test.com');
     $this->assertEquals('<a href="http://www.test.com"></a>', $link->asHtml());
+    $link = new Link('http://www.test.com', 'Test');
+    $this->assertEquals(
+      '<a href="http://www.test.com">Test</a>',
+      $link->asHtml()
+    );
   }
 
   public function testNewWindow()
