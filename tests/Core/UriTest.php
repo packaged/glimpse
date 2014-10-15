@@ -1,5 +1,5 @@
 <?php
-namespace Packaged\Tests\Glimpse;
+namespace Packaged\Tests\Glimpse\Core;
 
 use Packaged\Glimpse\Core\Uri;
 
