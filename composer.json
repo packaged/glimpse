@@ -1,0 +1,23 @@
+{
+  "name": "packaged/glimpse",
+  "description": "HTML Markup Helpers",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Brooke Bryan",
+      "email": "brooke@bajb.net"
+    }
+  ],
+  "require": {
+    "php": ">=5.4.0",
+    "packaged/helpers": "~0"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "~4.1"
+  },
+  "autoload": {
+    "psr-4": {
+      "Packaged\\Glimpse\\": "src"
+    }
+  }
+}
