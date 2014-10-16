@@ -30,7 +30,8 @@ class BasicTagsTest extends \PHPUnit_Framework_TestCase
     return [
       [$ns . 'Div', 'div'],
       [$ns . 'Text\CodeBlock', 'code'],
-      [$ns . 'Text\BoldText', 'strong'],
+      [$ns . 'Text\BoldText', 'b'],
+      [$ns . 'Text\StrongText', 'strong'],
       [$ns . 'Text\EmphasizedText', 'em'],
       [$ns . 'Text\HeadingOne', 'h1'],
       [$ns . 'Text\HeadingTwo', 'h2'],
@@ -38,6 +39,16 @@ class BasicTagsTest extends \PHPUnit_Framework_TestCase
       [$ns . 'Text\HeadingFour', 'h4'],
       [$ns . 'Text\HeadingFive', 'h5'],
       [$ns . 'Text\Headingsix', 'h6'],
+      [$ns . 'Text\Caption', 'caption'],
+      [$ns . 'Text\Citation', 'cite'],
+      [$ns . 'Text\DeletedText', 'del'],
+      [$ns . 'Text\InsertedText', 'ins'],
+      [$ns . 'Text\ItalicText', 'i'],
+      [$ns . 'Text\MarkedText', 'mark'],
+      [$ns . 'Text\Paragraph', 'p'],
+      [$ns . 'Text\QuotedText', 'q'],
+      [$ns . 'Text\SubscriptText', 'sub'],
+      [$ns . 'Text\SuperscriptText', 'sup'],
     ];
   }
 }

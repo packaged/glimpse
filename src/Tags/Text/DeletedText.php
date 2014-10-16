@@ -3,7 +3,7 @@ namespace Packaged\Glimpse\Tags\Text;
 
 use Packaged\Glimpse\Tags\AbstractContentTag;
 
-class BoldText extends AbstractContentTag
+class DeletedText extends AbstractContentTag
 {
-  protected $_tag = 'b';
+  protected $_tag = 'del';
 }
