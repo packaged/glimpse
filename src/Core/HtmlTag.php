@@ -281,21 +281,22 @@ class HtmlTag implements ISafeHtmlProducer
       }
     }
 
-    if($this->_content === null)
+    $content = $this->_content;
+    if($content === null)
     {
       if(isset($selfClosingTags[$this->_tag]))
       {
         return new SafeHtml('<' . $this->_tag . $attrString . ' />');
       }
-      $this->_content = '';
+      $content = '';
     }
     else
     {
-      $this->_content = SafeHtml::escape($this->_content);
+      $content = SafeHtml::escape($content);
     }
 
     return new SafeHtml(
-      '<' . $this->_tag . $attrString . '>' . $this->_content . '</' . $this->_tag . '>'
+      '<' . $this->_tag . $attrString . '>' . $content . '</' . $this->_tag . '>'
     );
   }
 
