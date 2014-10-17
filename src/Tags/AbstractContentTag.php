@@ -10,6 +10,12 @@ abstract class AbstractContentTag extends HtmlTag
     $this->setContent($content);
   }
 
+  public static function create($content = '')
+  {
+    $tag = new static($content);
+    return $tag;
+  }
+
   public static function collection(array $items)
   {
     $return = [];

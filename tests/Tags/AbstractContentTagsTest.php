@@ -24,6 +24,16 @@ class AbstractContentTagsTest extends \PHPUnit_Framework_TestCase
       '<' . $expect . '>Test</' . $expect . '>',
       $tag->asHtml()
     );
+
+    $tag = $class::create('Test');
+    $this->assertInstanceOf('\Packaged\Glimpse\Core\HtmlTag', $tag);
+    /**
+     * @var $tag HtmlTag
+     */
+    $this->assertEquals(
+      '<' . $expect . '>Test</' . $expect . '>',
+      $tag->asHtml()
+    );
   }
 
   public function tagDataProvider()
