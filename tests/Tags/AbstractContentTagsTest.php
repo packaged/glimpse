@@ -63,6 +63,7 @@ class AbstractContentTagsTest extends \PHPUnit_Framework_TestCase
       [$ns . 'Text\SuperscriptText', 'sup'],
       [$ns . 'Table\TableCell', 'td'],
       [$ns . 'Table\TableHeading', 'th'],
+      [$ns . 'Lists\ListItem', 'li'],
     ];
   }
 
