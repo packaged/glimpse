@@ -281,7 +281,7 @@ class HtmlTag implements ISafeHtmlProducer
       }
     }
 
-    $content = $this->_content;
+    $content = $this->_getContentForRender();
     if($content === null)
     {
       if(isset($selfClosingTags[$this->_tag]))
@@ -298,6 +298,11 @@ class HtmlTag implements ISafeHtmlProducer
     return new SafeHtml(
       '<' . $this->_tag . $attrString . '>' . $content . '</' . $this->_tag . '>'
     );
+  }
+
+  protected function _getContentForRender()
+  {
+    return $this->_content;
   }
 
   public function __toString()
