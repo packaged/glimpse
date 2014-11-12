@@ -33,6 +33,11 @@ class HtmlTagTest extends \PHPUnit_Framework_TestCase
     $this->assertEquals(['testing', 'content'], $tag->getContent());
     $this->assertEquals('testingcontent', $tag->getContent(false));
 
+    $tag->setContent('testing');
+    $tag->prependContent('content');
+    $this->assertEquals(['content', 'testing'], $tag->getContent());
+    $this->assertEquals('contenttesting', $tag->getContent(false));
+
     $tag->removeAttribute('class');
     $this->assertFalse($tag->hasClass('red'));
     $tag->addClass('red');

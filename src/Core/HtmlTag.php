@@ -134,6 +134,16 @@ class HtmlTag implements ISafeHtmlProducer
     return $this;
   }
 
+  public function prependContent($content)
+  {
+    if(!is_array($this->_content))
+    {
+      $this->_content = [$this->_content];
+    }
+    array_unshift($this->_content, $content);
+    return $this;
+  }
+
   public function setId($id)
   {
     return $this->setAttribute('id', $id);
