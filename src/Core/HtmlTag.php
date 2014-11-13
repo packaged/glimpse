@@ -195,6 +195,30 @@ class HtmlTag implements ISafeHtmlProducer
 
   public function removeClass($class)
   {
+    if(func_num_args() === 1)
+    {
+      return $this->_removeClass($class);
+    }
+
+    foreach(func_get_args() as $class)
+    {
+      if(is_array($class))
+      {
+        foreach($class as $c)
+        {
+          $this->_removeClass($c);
+        }
+      }
+      else
+      {
+        $this->_removeClass($class);
+      }
+    }
+    return $this;
+  }
+
+  protected function _removeClass($class)
+  {
     unset($this->_attributes['class'][$class]);
     return $this;
   }
