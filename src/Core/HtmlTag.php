@@ -326,7 +326,7 @@ class HtmlTag implements ISafeHtmlProducer
     }
     else
     {
-      $content = SafeHtml::escape($content);
+      $content = SafeHtml::escape($content, '');
     }
 
     return new SafeHtml(
