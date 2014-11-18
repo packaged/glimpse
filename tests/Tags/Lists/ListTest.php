@@ -23,16 +23,16 @@ class ListTest extends \PHPUnit_Framework_TestCase
   {
     $list = new UnorderedList();
     $list->addItem('One');
-    $this->assertEquals('<ul> <li>One</li></ul>', (string)$list);
+    $this->assertEquals('<ul><li>One</li></ul>', (string)$list);
 
     $list->addItem(ListItem::create('Two'));
-    $this->assertEquals('<ul> <li>One</li> <li>Two</li></ul>', (string)$list);
+    $this->assertEquals('<ul><li>One</li><li>Two</li></ul>', (string)$list);
   }
 
   public function testAddItems()
   {
     $list = new UnorderedList();
     $list->addItems(['One', ListItem::create('Two')]);
-    $this->assertEquals('<ul> <li>One</li> <li>Two</li></ul>', (string)$list);
+    $this->assertEquals('<ul><li>One</li><li>Two</li></ul>', (string)$list);
   }
 }

@@ -50,7 +50,7 @@ class AbstractContentTagsTest extends \PHPUnit_Framework_TestCase
       [$ns . 'Text\HeadingThree', 'h3'],
       [$ns . 'Text\HeadingFour', 'h4'],
       [$ns . 'Text\HeadingFive', 'h5'],
-      [$ns . 'Text\Headingsix', 'h6'],
+      [$ns . 'Text\HeadingSix', 'h6'],
       [$ns . 'Text\Caption', 'caption'],
       [$ns . 'Text\Citation', 'cite'],
       [$ns . 'Text\DeletedText', 'del'],
