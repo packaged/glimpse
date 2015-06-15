@@ -1,6 +1,8 @@
 <?php
 namespace Packaged\Glimpse\Core;
 
+use Packaged\Helpers\Strings;
+
 final class SafeHtml
 {
   private $content;
@@ -76,7 +78,7 @@ final class SafeHtml
       );
     }
 
-    return esc($string);
+    return Strings::escape($string);
   }
 
   /**
@@ -86,7 +88,8 @@ final class SafeHtml
    * (the URIs will work) and desirable (the URIs will be readable) behavior in
    * these cases:
    *
-   *    '/path/?param='.phutil_escape_uri($string);         # OK: Query Parameter
+   *    '/path/?param='.phutil_escape_uri($string);         # OK: Query
+   *    Parameter
    *    '/path/to/'.phutil_escape_uri($string);             # OK: URI Suffix
    *
    * It will potentially produce the WRONG behavior in this special case:
@@ -96,8 +99,9 @@ final class SafeHtml
    *
    * In this case, any '/' characters in the string will not be escaped, so you
    * will not be able to distinguish between the string and the suffix (unless
-   * you have more information, like you know the format of the suffix). For infix
-   * URI components, use @{function:phutil_escape_uri_path_component} instead.
+   * you have more information, like you know the format of the suffix). For
+   * infix URI components, use @{function:phutil_escape_uri_path_component}
+   * instead.
    *
    * @param   string $string Some string.
    *
@@ -110,15 +114,17 @@ final class SafeHtml
 
   /**
    * Escape text for inclusion as an infix URI substring. See discussion at
-   * @{function:phutil_escape_uri}. This function covers an unusual special case;
+   * @{function:phutil_escape_uri}. This function covers an unusual special
+   *                                case;
    * @{function:phutil_escape_uri} is usually the correct function to use.
    *
    * This function will escape a string into a format which is safe to put into
-   * a URI path and which does not contain '/' so it can be correctly parsed when
-   * embedded as a URI infix component.
+   * a URI path and which does not contain '/' so it can be correctly parsed
+   * when embedded as a URI infix component.
    *
    * However, you MUST decode the string with
-   * @{function:phutil_unescape_uri_path_component} before it can be used in the
+   * @{function:phutil_unescape_uri_path_component} before it can be used in
+   *                                                the
    * application.
    *
    * @param   string $string Some string.

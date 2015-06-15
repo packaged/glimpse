@@ -1,6 +1,8 @@
 <?php
 namespace Packaged\Glimpse\Core;
 
+use Packaged\Helpers\Arrays;
+
 /**
  * Render a HTML tag in a way that treats user content as unsafe by default.
  *
@@ -116,7 +118,7 @@ class HtmlTag implements ISafeHtmlProducer
 
   public function getAttribute($key, $default = null)
   {
-    return idx($this->_attributes, $key, $default);
+    return Arrays::value($this->_attributes, $key, $default);
   }
 
   public function hasAttribute($key)
@@ -151,7 +153,7 @@ class HtmlTag implements ISafeHtmlProducer
 
   public function getId()
   {
-    return idx($this->_attributes, 'id');
+    return Arrays::value($this->_attributes, 'id');
   }
 
   public function addClass($class)
@@ -225,7 +227,7 @@ class HtmlTag implements ISafeHtmlProducer
 
   public function getClasses()
   {
-    return (array)idx($this->_attributes, 'class', []);
+    return (array)Arrays::value($this->_attributes, 'class', []);
   }
 
   /**

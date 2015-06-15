@@ -1,6 +1,9 @@
 <?php
 namespace Packaged\Glimpse\Core;
 
+use Packaged\Helpers\Arrays;
+use Packaged\Helpers\ValueAs;
+
 /**
  * Basic URI parser object.
  */
@@ -50,7 +53,7 @@ final class Uri
     // the host looks like garbage.
     if($parts)
     {
-      $host = idx($parts, 'host', '');
+      $host = Arrays::value($parts, 'host', '');
       if(!preg_match('/^([a-zA-Z0-9\\.\\-]*)$/', $host))
       {
         $parts = false;
@@ -64,14 +67,14 @@ final class Uri
 
     // stringyness is to preserve API compatibility and
     // allow the tests to continue passing
-    $this->setProtocol(idx($parts, 'scheme', ''));
-    $this->setUser(rawurldecode(idx($parts, 'user', '')));
-    $this->setPass(rawurldecode(idx($parts, 'pass', '')));
-    $this->setDomain(idx($parts, 'host', ''));
-    $this->setPort((string)idx($parts, 'port', ''));
-    $this->setPath(idx($parts, 'path', ''));
-    parse_str(idx($parts, 'query'), $this->query);
-    $this->setFragment(idx($parts, 'fragment', ''));
+    $this->setProtocol(Arrays::value($parts, 'scheme', ''));
+    $this->setUser(rawurldecode(Arrays::value($parts, 'user', '')));
+    $this->setPass(rawurldecode(Arrays::value($parts, 'pass', '')));
+    $this->setDomain(Arrays::value($parts, 'host', ''));
+    $this->setPort((string)Arrays::value($parts, 'port', ''));
+    $this->setPath(Arrays::value($parts, 'path', ''));
+    parse_str(Arrays::value($parts, 'query'), $this->query);
+    $this->setFragment(Arrays::value($parts, 'fragment', ''));
   }
 
   public function __toString()
@@ -79,7 +82,7 @@ final class Uri
     $prefix = null;
     if($this->protocol || $this->domain || $this->port)
     {
-      $protocol = nonempty($this->protocol, 'http');
+      $protocol = ValueAs::nonempty($this->protocol, 'http');
 
       $auth = '';
       if(strlen($this->user) && strlen($this->pass))
@@ -197,7 +200,7 @@ final class Uri
   public function appendPath($path)
   {
     $first = strlen($path) ? $path[0] : null;
-    $last  = strlen($this->path) ? $this->path[strlen($this->path) - 1] : null;
+    $last = strlen($this->path) ? $this->path[strlen($this->path) - 1] : null;
 
     if(!$this->path)
     {
