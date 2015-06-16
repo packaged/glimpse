@@ -56,7 +56,7 @@ final class SafeHtml
       {
         try
         {
-          assert_stringlike($result);
+          Strings::stringable($result);
           return self::escape((string)$result);
         }
         catch(\Exception $ex)

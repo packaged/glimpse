@@ -4,6 +4,7 @@ namespace Packaged\Tests\Glimpse\Tags;
 use Packaged\Glimpse\Core\HtmlTag;
 use Packaged\Glimpse\Core\SafeHtml;
 use Packaged\Glimpse\Tags\Text\Paragraph;
+use Packaged\Helpers\Objects;
 
 class AbstractContentTagsTest extends \PHPUnit_Framework_TestCase
 {
@@ -15,7 +16,7 @@ class AbstractContentTagsTest extends \PHPUnit_Framework_TestCase
    */
   public function testTagHtml($class, $expect)
   {
-    $tag = newv($class, ['Test']);
+    $tag = Objects::create($class, ['Test']);
     $this->assertInstanceOf('\Packaged\Glimpse\Core\HtmlTag', $tag);
     /**
      * @var $tag HtmlTag
