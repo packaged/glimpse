@@ -2,6 +2,7 @@
 namespace Packaged\Glimpse\Core;
 
 use Packaged\Helpers\Arrays;
+use Packaged\Helpers\ValueAs;
 
 /**
  * Render a HTML tag in a way that treats user content as unsafe by default.
@@ -160,10 +161,14 @@ class HtmlTag implements ISafeHtmlProducer
   {
     if(func_num_args() === 1)
     {
-      return $this->_addClass($class);
+      $classes = ValueAs::arr($class);
+    }
+    else
+    {
+      $classes = func_get_args();
     }
 
-    foreach(func_get_args() as $class)
+    foreach($classes as $class)
     {
       if(is_array($class))
       {
@@ -199,10 +204,14 @@ class HtmlTag implements ISafeHtmlProducer
   {
     if(func_num_args() === 1)
     {
-      return $this->_removeClass($class);
+      $classes = ValueAs::arr($class);
+    }
+    else
+    {
+      $classes = func_get_args();
     }
 
-    foreach(func_get_args() as $class)
+    foreach($classes as $class)
     {
       if(is_array($class))
       {
