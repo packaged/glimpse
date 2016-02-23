@@ -359,7 +359,8 @@ class HtmlTag implements ISafeHtmlProducer
     catch(\Exception $e)
     {
       error_log(
-        '[' . $e->getCode() . '] ' . $e->getMessage()
+        ($e->getCode() > 0 ? '[' . $e->getCode() . '] ' : '')
+        . $e->getMessage()
         . ' (' . $e->getFile() . ':' . $e->getLine() . ')'
       );
       return $e->getMessage();
