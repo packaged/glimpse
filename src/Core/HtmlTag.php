@@ -358,7 +358,11 @@ class HtmlTag implements ISafeHtmlProducer
     }
     catch(\Exception $e)
     {
-      return $e->getMessage() . '<br/>' . nl2br($e->getTraceAsString());
+      error_log(
+        '[' . $e->getCode() . '] ' . $e->getMessage()
+        . ' (' . $e->getFile() . ':' . $e->getLine() . ')'
+      );
+      return $e->getMessage();
     }
   }
 
