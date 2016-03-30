@@ -7,6 +7,11 @@ class Link extends HtmlTag
 {
   protected $_tag = 'a';
 
+  public static function create($uri = null, $content = null)
+  {
+    return new static($uri, $content);
+  }
+
   public function __construct($uri, $content = null)
   {
     $this->setAttribute('href', $uri);
@@ -82,7 +87,7 @@ class Link extends HtmlTag
    * license  Links to copyright information for the document
    * next  The next document in a selection
    * nofollow  Links to an unendorsed document, like a paid link.
-   * noreferrer  Specifies that the browser should not send a HTTP referer header
+   * noreferrer Specifies that the browser should not send a HTTP referer header
    * prefetch  Specifies that the target document should be cached
    * prev  The previous document in a selection
    * search  Links to a search tool for the document
