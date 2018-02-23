@@ -21,7 +21,14 @@ abstract class AbstractContentTag extends HtmlTag
     $return = [];
     foreach($items as $item)
     {
-      $return[] = new static($item);
+      if($item instanceof static)
+      {
+        $return[] = $item;
+      }
+      else
+      {
+        $return[] = new static($item);
+      }
     }
     return $return;
   }
