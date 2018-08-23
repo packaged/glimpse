@@ -1,9 +1,7 @@
 <?php
 namespace Packaged\Glimpse\Tags\Form;
 
-use Packaged\Glimpse\Tags\AbstractContentTag;
-
-class Option extends AbstractContentTag
+class Option extends AbstractFormElementTag
 {
   protected $_tag = 'option';
 

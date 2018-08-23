@@ -1,9 +1,7 @@
 <?php
 namespace Packaged\Glimpse\Tags\Form;
 
-use Packaged\Glimpse\Tags\AbstractContentTag;
-
-class Input extends AbstractContentTag
+class Input extends AbstractFormElementTag
 {
   const TYPE_BUTTON = 'button';
   const TYPE_CHECKBOX = 'checkbox';
@@ -50,16 +48,5 @@ class Input extends AbstractContentTag
   public function getValue()
   {
     return $this->getAttribute('value');
-  }
-
-  public function setName($name)
-  {
-    $this->setAttribute('name', $name);
-    return $this;
-  }
-
-  public function getName()
-  {
-    return $this->getAttribute('name');
   }
 }
