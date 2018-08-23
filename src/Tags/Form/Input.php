@@ -38,7 +38,7 @@ class Input extends AbstractContentTag
 
   public function getType()
   {
-    $this->getAttribute('type');
+    return $this->getAttribute('type');
   }
 
   public function setValue($value)
@@ -49,6 +49,17 @@ class Input extends AbstractContentTag
 
   public function getValue()
   {
-    $this->getAttribute('value');
+    return $this->getAttribute('value');
+  }
+
+  public function setName($name)
+  {
+    $this->setAttribute('name', $name);
+    return $this;
+  }
+
+  public function getName()
+  {
+    return $this->getAttribute('name');
   }
 }
