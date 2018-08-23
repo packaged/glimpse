@@ -29,14 +29,14 @@ class HtmlTag implements ISafeHtmlProducer
 
   public static function create()
   {
-    return new static;
+    return new static();
   }
 
   public static function createTag(
     $tag, array $attributes = [], $content = null
   )
   {
-    $html = new static;
+    $html = new static();
     $html->setTag($tag);
     $html->setAttributes($attributes);
     $html->setContent($content);
