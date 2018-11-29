@@ -1,10 +1,9 @@
 <?php
 namespace Packaged\Glimpse\Core;
 
-interface ISafeHtmlProducer
+/**
+ * @deprecated
+ */
+interface ISafeHtmlProducer extends \Packaged\SafeHtml\ISafeHtmlProducer
 {
-  /**
-   * @return SafeHtml|SafeHtml[]
-   */
-  public function produceSafeHTML();
 }

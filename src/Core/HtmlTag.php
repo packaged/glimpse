@@ -3,6 +3,8 @@ namespace Packaged\Glimpse\Core;
 
 use Packaged\Helpers\Arrays;
 use Packaged\Helpers\ValueAs;
+use Packaged\SafeHtml\ISafeHtmlProducer;
+use Packaged\SafeHtml\SafeHtml;
 
 /**
  * Render a HTML tag in a way that treats user content as unsafe by default.

@@ -3,6 +3,7 @@ namespace Packaged\Glimpse\Core;
 
 use Packaged\Helpers\Arrays;
 use Packaged\Helpers\ValueAs;
+use Packaged\SafeHtml\SafeHtml;
 
 /**
  * Basic URI parser object.
