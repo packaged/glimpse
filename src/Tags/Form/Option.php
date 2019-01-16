@@ -1,13 +1,15 @@
 <?php
 namespace Packaged\Glimpse\Tags\Form;
 
+use Packaged\Helpers\Arrays;
+
 class Option extends AbstractFormElementTag
 {
   protected $_tag = 'option';
 
   public function __construct($content = null, $value = null)
   {
-    if($value)
+    if($value !== null)
     {
       $this->setAttribute('value', $value);
     }
@@ -17,6 +19,7 @@ class Option extends AbstractFormElementTag
   public static function collection(array $items)
   {
     $return = [];
+    $isAssoc = Arrays::isAssoc($items);
     foreach($items as $k => $item)
     {
       if($item instanceof static)
@@ -25,7 +28,7 @@ class Option extends AbstractFormElementTag
       }
       else
       {
-        $return[] = new static($item, $k);
+        $return[] = new static($item, $isAssoc ? $k : null);
       }
     }
     return $return;

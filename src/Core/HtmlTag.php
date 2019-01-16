@@ -23,39 +23,17 @@ use Packaged\SafeHtml\SafeHtml;
  * parameters.
  *
  */
-class HtmlTag implements ISafeHtmlProducer
+abstract class HtmlTag implements ISafeHtmlProducer
 {
   protected $_tag;
   protected $_attributes = [];
   protected $_content;
 
+  public function __construct() { }
+
   public static function create()
   {
     return new static();
-  }
-
-  public static function createTag(
-    $tag, array $attributes = [], $content = null
-  )
-  {
-    $html = new static();
-    $html->setTag($tag);
-    $html->setAttributes($attributes);
-    $html->setContent($content);
-    return $html;
-  }
-
-  /**
-   * The name of the tag, like `a` or `div`.
-   *
-   * @param $tag
-   *
-   * @return $this
-   */
-  public function setTag($tag)
-  {
-    $this->_tag = $tag;
-    return $this;
   }
 
   public function getTag()
@@ -342,9 +320,7 @@ class HtmlTag implements ISafeHtmlProducer
       $content = SafeHtml::escape($content, '');
     }
 
-    return new SafeHtml(
-      '<' . $this->_tag . $attrString . '>' . $content . '</' . $this->_tag . '>'
-    );
+    return new SafeHtml('<' . $this->_tag . $attrString . '>' . $content . '</' . $this->_tag . '>');
   }
 
   protected function _getContentForRender()

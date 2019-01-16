@@ -2,8 +2,9 @@
 namespace Packaged\Tests\Glimpse\Core;
 
 use Packaged\Glimpse\Core\Uri;
+use PHPUnit\Framework\TestCase;
 
-class UriTest extends \PHPUnit_Framework_TestCase
+class UriTest extends TestCase
 {
   public function testURIParsing()
   {

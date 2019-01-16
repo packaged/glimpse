@@ -1,9 +1,10 @@
 <?php
 namespace Packaged\Tests\Glimpse\Elements;
 
-use Packaged\Glimpse\Elements\LineBreak;
+use Packaged\Glimpse\Tags\LineBreak;
+use PHPUnit\Framework\TestCase;
 
-class LineBreakTest extends \PHPUnit_Framework_TestCase
+class LineBreakTest extends TestCase
 {
   public function testTagHtml()
   {

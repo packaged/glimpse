@@ -2,11 +2,13 @@
 namespace Packaged\Tests\Glimpse\Tags;
 
 use Packaged\Glimpse\Core\HtmlTag;
-use Packaged\Glimpse\Core\SafeHtml;
+use Packaged\Glimpse\Tags\AbstractContentTag;
 use Packaged\Glimpse\Tags\Text\Paragraph;
 use Packaged\Helpers\Objects;
+use Packaged\SafeHtml\SafeHtml;
+use PHPUnit\Framework\TestCase;
 
-class AbstractContentTagsTest extends \PHPUnit_Framework_TestCase
+class AbstractContentTagsTest extends TestCase
 {
   /**
    * @param $class
@@ -16,25 +18,20 @@ class AbstractContentTagsTest extends \PHPUnit_Framework_TestCase
    */
   public function testTagHtml($class, $expect)
   {
+    /** @var AbstractContentTag $tag */
     $tag = Objects::create($class, ['Test']);
     $this->assertInstanceOf('\Packaged\Glimpse\Core\HtmlTag', $tag);
     /**
      * @var $tag HtmlTag
      */
-    $this->assertEquals(
-      '<' . $expect . '>Test</' . $expect . '>',
-      $tag->asHtml()
-    );
+    $this->assertEquals('<' . $expect . '>Test</' . $expect . '>', $tag->asHtml());
 
-    $tag = $class::create('Test');
+    $tag = $tag::create('Test');
     $this->assertInstanceOf('\Packaged\Glimpse\Core\HtmlTag', $tag);
     /**
      * @var $tag HtmlTag
      */
-    $this->assertEquals(
-      '<' . $expect . '>Test</' . $expect . '>',
-      $tag->asHtml()
-    );
+    $this->assertEquals('<' . $expect . '>Test</' . $expect . '>', $tag->asHtml());
   }
 
   public function tagDataProvider()
@@ -71,9 +68,12 @@ class AbstractContentTagsTest extends \PHPUnit_Framework_TestCase
   public function testCollection()
   {
     $tags = Paragraph::collection(['a', 'b', 'c']);
-    $this->assertEquals(
-      '<p>a</p><p>b</p><p>c</p>',
-      SafeHtml::escape($tags, '')
-    );
+    $this->assertEquals('<p>a</p><p>b</p><p>c</p>', SafeHtml::escape($tags, ''));
+  }
+
+  public function testStaticCollection()
+  {
+    $tags = Paragraph::collection(['a', new Paragraph('b'), 'c']);
+    $this->assertEquals('<p>a</p><p>b</p><p>c</p>', SafeHtml::escape($tags, ''));
   }
 }

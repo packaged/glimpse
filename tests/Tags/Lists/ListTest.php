@@ -4,8 +4,9 @@ namespace Packaged\Tests\Glimpse\Tags\Lists;
 use Packaged\Glimpse\Tags\Lists\ListItem;
 use Packaged\Glimpse\Tags\Lists\OrderedList;
 use Packaged\Glimpse\Tags\Lists\UnorderedList;
+use PHPUnit\Framework\TestCase;
 
-class ListTest extends \PHPUnit_Framework_TestCase
+class ListTest extends TestCase
 {
   public function testOrderedList()
   {

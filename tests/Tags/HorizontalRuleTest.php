@@ -1,9 +1,10 @@
 <?php
 namespace Packaged\Tests\Glimpse\Elements;
 
-use Packaged\Glimpse\Elements\HorizontalRule;
+use Packaged\Glimpse\Tags\HorizontalRule;
+use PHPUnit\Framework\TestCase;
 
-class HorizontalRuleTest extends \PHPUnit_Framework_TestCase
+class HorizontalRuleTest extends TestCase
 {
   public function testTagHtml()
   {

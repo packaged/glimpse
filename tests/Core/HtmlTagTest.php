@@ -1,15 +1,15 @@
 <?php
 namespace Packaged\Tests\Glimpse\Core;
 
-use Packaged\Glimpse\Core\HtmlTag;
+use Packaged\Glimpse\Core\CustomHtmlTag;
 use Packaged\Glimpse\Core\Uri;
+use PHPUnit\Framework\TestCase;
 
-class HtmlTagTest extends \PHPUnit_Framework_TestCase
+class HtmlTagTest extends TestCase
 {
   public function testGettersAndSetters()
   {
-    $tag = new HtmlTag();
-    $tag->setTag('a');
+    $tag = new CustomHtmlTag('a');
     $this->assertEquals('a', $tag->getTag());
 
     $tag->setId('myid');
@@ -63,31 +63,28 @@ class HtmlTagTest extends \PHPUnit_Framework_TestCase
 
   public function testCreateStatic()
   {
-    $this->assertInstanceOf(
-      '\Packaged\Glimpse\Core\HtmlTag',
-      HtmlTag::create()
-    );
+    $this->assertInstanceOf('\Packaged\Glimpse\Core\CustomHtmlTag', CustomHtmlTag::create());
   }
 
   public function testSelfClosers()
   {
-    $this->assertEquals('<br />', (string)HtmlTag::createTag('br'));
+    $this->assertEquals('<br />', (string)CustomHtmlTag::build('br'));
     $this->assertEquals(
       '<img src="x.gif" />',
-      (string)HtmlTag::createTag('img', ['src' => 'x.gif'])
+      (string)CustomHtmlTag::build('img', ['src' => 'x.gif'])
     );
   }
 
   public function testNullContent()
   {
-    $this->assertEquals('<div></div>', (string)HtmlTag::createTag('div'));
+    $this->assertEquals('<div></div>', (string)CustomHtmlTag::build('div'));
   }
 
   public function testBooleanAttribute()
   {
     $this->assertEquals(
       '<option selected></option>',
-      (string)HtmlTag::createTag('option', ['selected' => null])
+      (string)CustomHtmlTag::build('option', ['selected' => null])
     );
   }
 
@@ -147,7 +144,7 @@ class HtmlTagTest extends \PHPUnit_Framework_TestCase
         $caught = null;
         try
         {
-          HtmlTag::createTag('a', ['href' => $href], 'go')->produceSafeHTML();
+          CustomHtmlTag::build('a', ['href' => $href], 'go')->produceSafeHTML();
         }
         catch(\Exception $ex)
         {
@@ -164,7 +161,7 @@ class HtmlTagTest extends \PHPUnit_Framework_TestCase
 
   public function testToStringException()
   {
-    $tag = HtmlTag::createTag('a', ['href' => 'javascript:alert(\'Hi\');']);
+    $tag = CustomHtmlTag::build('a', ['href' => 'javascript:alert(\'Hi\');']);
     $this->assertContains('Attempting to render a tag with an', (string)$tag);
   }
 }

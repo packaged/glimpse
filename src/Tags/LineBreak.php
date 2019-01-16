@@ -1,5 +1,5 @@
 <?php
-namespace Packaged\Glimpse\Elements;
+namespace Packaged\Glimpse\Tags;
 
 use Packaged\Glimpse\Core\HtmlTag;
 

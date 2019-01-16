@@ -28,6 +28,12 @@ class Input extends AbstractFormElementTag
 
   protected $_tag = 'input';
 
+  public function __construct($content = null)
+  {
+    parent::__construct($content);
+    $this->setType(self::TYPE_TEXT);
+  }
+
   public function setType($type)
   {
     $this->setAttribute('type', $type);

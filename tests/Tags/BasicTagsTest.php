@@ -2,8 +2,9 @@
 namespace Packaged\Tests\Glimpse\Tags;
 
 use Packaged\Glimpse\Core\HtmlTag;
+use PHPUnit\Framework\TestCase;
 
-class BasicTagsTest extends \PHPUnit_Framework_TestCase
+class BasicTagsTest extends TestCase
 {
   /**
    * @param $class
@@ -13,7 +14,7 @@ class BasicTagsTest extends \PHPUnit_Framework_TestCase
    */
   public function testTagHtml($class, $expect)
   {
-    $tag = new $class;
+    $tag = new $class();
     $this->assertInstanceOf('\Packaged\Glimpse\Core\HtmlTag', $tag);
     /**
      * @var $tag HtmlTag

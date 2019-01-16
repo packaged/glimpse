@@ -12,10 +12,14 @@ class Link extends HtmlTag
     return new static($uri, $content);
   }
 
-  public function __construct($uri, $content = null)
+  public function __construct($uri = null, $content = null)
   {
-    $this->setAttribute('href', $uri);
-    $this->setContent($content);
+    parent::__construct();
+    if($uri !== null)
+    {
+      $this->setLocation($uri);
+    }
+    $this->setContent($content ?? $uri);
   }
 
   /**
