@@ -3,6 +3,8 @@ namespace Packaged\Tests\Glimpse\Core;
 
 use Packaged\Glimpse\Core\CustomHtmlTag;
 use Packaged\Glimpse\Core\Uri;
+use Packaged\Glimpse\Tags\Link;
+use Packaged\Glimpse\Tags\Span;
 use PHPUnit\Framework\TestCase;
 
 class HtmlTagTest extends TestCase
@@ -163,5 +165,17 @@ class HtmlTagTest extends TestCase
   {
     $tag = CustomHtmlTag::build('a', ['href' => 'javascript:alert(\'Hi\');']);
     $this->assertContains('Attempting to render a tag with an', (string)$tag);
+  }
+
+  public function testCopyFrom()
+  {
+    $original = Link::create('http://www.test.com', 'Hi There');
+    $original->addClass('a', 'b');
+    $new = Span::create();
+    $new->copyFrom($original);
+    $this->assertEquals('http://www.test.com', $new->getAttribute('href'));
+    $this->assertEquals('Hi There', $new->getContent(false));
+    $this->assertContains('a', $new->getClasses());
+    $this->assertTrue($new->hasClass('b'));
   }
 }

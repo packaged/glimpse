@@ -349,4 +349,15 @@ abstract class HtmlTag implements ISafeHtmlProducer
   {
     return (string)$this->produceSafeHTML();
   }
+
+  public function copyFrom(HtmlTag $tag)
+  {
+    $this->setContent($tag->getContent());
+    foreach($tag->getAttributes() as $k => $v)
+    {
+      $this->setAttribute($k, $v);
+    }
+    $this->addClass($tag->getClasses());
+    return $this;
+  }
 }
