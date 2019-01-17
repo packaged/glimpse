@@ -1,17 +1,17 @@
 <?php
 namespace Packaged\Glimpse\Tags\Form;
 
-use Packaged\Glimpse\Core\HtmlTag;
+use Packaged\Glimpse\Tags\AbstractContentTag;
 
-class Label extends HtmlTag
+class Label extends AbstractContentTag
 {
   protected $_tag = 'label';
   protected $_for;
 
-  public static function create($for = null)
+  public static function create($content = '', $for = null)
   {
     /** @var Label $ele */
-    $ele = parent::create();
+    $ele = parent::create($content);
     $ele->setFor($for);
     return $ele;
   }
