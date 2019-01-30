@@ -228,10 +228,10 @@ abstract class HtmlTag implements ISafeHtmlProducer
   }
 
   /**
-   * @return SafeHtml|SafeHtml[]
+   * @return SafeHtml
    * @throws \Exception
    */
-  public function produceSafeHTML()
+  public function produceSafeHTML(): SafeHtml
   {
     // If the `href` attribute is present:
     //   - make sure it is not a "javascript:" URI. We never permit these.
