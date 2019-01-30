@@ -304,13 +304,13 @@ abstract class HtmlTag implements ISafeHtmlProducer
     $attrString = '';
     foreach($this->_attributes as $k => $v)
     {
-      if($v !== null)
+      if($v === null || $v === true)
       {
-        $attrString .= ' ' . $k . '="' . SafeHtml::escape($v) . '"';
+        $attrString .= ' ' . $k;
       }
       else
       {
-        $attrString .= ' ' . $k;
+        $attrString .= ' ' . $k . '="' . SafeHtml::escape($v) . '"';
       }
     }
 

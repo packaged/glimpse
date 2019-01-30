@@ -17,6 +17,9 @@ class HtmlTagTest extends TestCase
     $tag->setId('myid');
     $this->assertEquals('myid', $tag->getId());
 
+    $tag->setId('');
+    $this->assertEquals(null, $tag->getId());
+
     $this->assertFalse($tag->hasAttribute('random'));
     $this->assertEquals('no', $tag->getAttribute('random', 'no'));
     $tag->setAttribute('random', 'test');
@@ -159,6 +162,14 @@ class HtmlTagTest extends TestCase
         );
       }
     }
+  }
+
+  public function testFlagAttribute()
+  {
+    $ele = CustomHtmlTag::build('div');
+    $ele->setAttribute('flag1', null);
+    $ele->setAttribute('flag2', true);
+    $this->assertEquals('<div flag1 flag2></div>', $ele->produceSafeHTML()->getContent());
   }
 
   public function testToStringException()
