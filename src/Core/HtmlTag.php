@@ -129,12 +129,20 @@ abstract class HtmlTag implements ISafeHtmlProducer
 
   public function setId($id)
   {
-    return $this->setAttribute('id', $id);
+    if(empty($id))
+    {
+      $this->removeAttribute('id');
+    }
+    else
+    {
+      $this->setAttribute('id', $id);
+    }
+    return $this;
   }
 
   public function getId()
   {
-    return Arrays::value($this->_attributes, 'id');
+    return $this->getAttribute('id');
   }
 
   public function addClass($class)
