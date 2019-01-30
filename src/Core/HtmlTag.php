@@ -91,6 +91,19 @@ abstract class HtmlTag implements ISafeHtmlProducer
     return $this->_content;
   }
 
+  public function setOrRemoveAttribute($key, $value)
+  {
+    if(!empty($value))
+    {
+      $this->setAttribute($key, $value);
+    }
+    else
+    {
+      $this->removeAttribute($key);
+    }
+    return $this;
+  }
+
   public function setAttribute($key, $value)
   {
     $this->_attributes[$key] = $value;
@@ -129,15 +142,7 @@ abstract class HtmlTag implements ISafeHtmlProducer
 
   public function setId($id)
   {
-    if(empty($id))
-    {
-      $this->removeAttribute('id');
-    }
-    else
-    {
-      $this->setAttribute('id', $id);
-    }
-    return $this;
+    return $this->setOrRemoveAttribute('id', $id);
   }
 
   public function getId()
@@ -361,10 +366,7 @@ abstract class HtmlTag implements ISafeHtmlProducer
   public function copyFrom(HtmlTag $tag)
   {
     $this->setContent($tag->getContent());
-    foreach($tag->getAttributes() as $k => $v)
-    {
-      $this->setAttribute($k, $v);
-    }
+    $this->setAttributes($tag->getAttributes());
     $this->addClass($tag->getClasses());
     return $this;
   }

@@ -7,8 +7,7 @@ abstract class AbstractFormElementTag extends AbstractContentTag
 {
   public function setName($name)
   {
-    $this->setAttribute('name', $name);
-    return $this;
+    return $this->setOrRemoveAttribute('name', $name);
   }
 
   public function getName()
@@ -18,15 +17,7 @@ abstract class AbstractFormElementTag extends AbstractContentTag
 
   public function setDisabled($disabled = true)
   {
-    if($disabled)
-    {
-      $this->setAttribute('disabled', 'disabled');
-    }
-    else
-    {
-      $this->removeAttribute('disabled');
-    }
-    return $this;
+    return $this->setOrRemoveAttribute('disabled', $disabled ? 'disabled' : null);
   }
 
   public function isDisabled()
@@ -36,20 +27,11 @@ abstract class AbstractFormElementTag extends AbstractContentTag
 
   public function setRequired($required = true)
   {
-    if($required)
-    {
-      $this->setAttribute('required', 'required');
-    }
-    else
-    {
-      $this->removeAttribute('required');
-    }
-    return $this;
+    return $this->setOrRemoveAttribute('required', $required ? 'required' : null);
   }
 
   public function isRequired()
   {
     return $this->hasAttribute('required');
   }
-
 }
