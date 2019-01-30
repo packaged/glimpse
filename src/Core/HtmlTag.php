@@ -307,7 +307,7 @@ abstract class HtmlTag implements ISafeHtmlProducer
     }
 
     $content = $this->_getContentForRender();
-    if($content === null)
+    if(empty($content))
     {
       if(isset($selfClosingTags[$this->_tag]))
       {
