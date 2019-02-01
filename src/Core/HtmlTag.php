@@ -31,11 +31,17 @@ abstract class HtmlTag implements ISafeHtmlProducer
 
   public function __construct() { }
 
+  /**
+   * @return static
+   */
   public static function create()
   {
     return new static();
   }
 
+  /**
+   * @return string
+   */
   public function getTag()
   {
     return $this->_tag;
@@ -54,12 +60,20 @@ abstract class HtmlTag implements ISafeHtmlProducer
     return $this;
   }
 
+  /**
+   * @param string $key
+   *
+   * @return $this
+   */
   public function removeAttribute($key)
   {
     unset($this->_attributes[$key]);
     return $this;
   }
 
+  /**
+   * @return array
+   */
   public function getAttributes()
   {
     return $this->_attributes;
@@ -78,6 +92,11 @@ abstract class HtmlTag implements ISafeHtmlProducer
     return $this;
   }
 
+  /**
+   * @param bool $asArray
+   *
+   * @return array|string
+   */
   public function getContent($asArray = true)
   {
     if($asArray)
@@ -91,6 +110,12 @@ abstract class HtmlTag implements ISafeHtmlProducer
     return $this->_content;
   }
 
+  /**
+   * @param string $key
+   * @param string $value
+   *
+   * @return $this
+   */
   public function setOrRemoveAttribute($key, $value)
   {
     if(!empty($value))
@@ -104,22 +129,44 @@ abstract class HtmlTag implements ISafeHtmlProducer
     return $this;
   }
 
+  /**
+   * @param string $key
+   * @param string $value
+   *
+   * @return $this
+   */
   public function setAttribute($key, $value)
   {
     $this->_attributes[$key] = $value;
     return $this;
   }
 
+  /**
+   * @param string $key
+   * @param string $default
+   *
+   * @return string
+   */
   public function getAttribute($key, $default = null)
   {
     return Arrays::value($this->_attributes, $key, $default);
   }
 
+  /**
+   * @param $key
+   *
+   * @return bool
+   */
   public function hasAttribute($key)
   {
     return array_key_exists($key, $this->_attributes);
   }
 
+  /**
+   * @param $content
+   *
+   * @return $this
+   */
   public function appendContent($content)
   {
     if(!is_array($this->_content))
@@ -130,6 +177,11 @@ abstract class HtmlTag implements ISafeHtmlProducer
     return $this;
   }
 
+  /**
+   * @param $content
+   *
+   * @return $this
+   */
   public function prependContent($content)
   {
     if(!is_array($this->_content))
@@ -140,16 +192,29 @@ abstract class HtmlTag implements ISafeHtmlProducer
     return $this;
   }
 
+  /**
+   * @param string $id
+   *
+   * @return $this
+   */
   public function setId($id)
   {
     return $this->setOrRemoveAttribute('id', $id);
   }
 
+  /**
+   * @return string
+   */
   public function getId()
   {
     return $this->getAttribute('id');
   }
 
+  /**
+   * @param string|array $class
+   *
+   * @return $this
+   */
   public function addClass($class)
   {
     if(func_num_args() === 1)
@@ -188,11 +253,21 @@ abstract class HtmlTag implements ISafeHtmlProducer
     return $this;
   }
 
+  /**
+   * @param string $class
+   *
+   * @return bool
+   */
   public function hasClass($class)
   {
     return isset($this->_attributes['class'][$class]);
   }
 
+  /**
+   * @param string|array $class
+   *
+   * @return $this
+   */
   public function removeClass($class)
   {
     if(func_num_args() === 1)
@@ -363,6 +438,11 @@ abstract class HtmlTag implements ISafeHtmlProducer
     return (string)$this->produceSafeHTML();
   }
 
+  /**
+   * @param HtmlTag $tag
+   *
+   * @return $this
+   */
   public function copyFrom(HtmlTag $tag)
   {
     $this->setContent($tag->getContent());
