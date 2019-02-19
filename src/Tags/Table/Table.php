@@ -1,9 +1,9 @@
 <?php
 namespace Packaged\Glimpse\Tags\Table;
 
-use Packaged\Glimpse\Core\HtmlTag;
+use Packaged\Glimpse\Core\AbstractContainerTag;
 
-class Table extends HtmlTag
+class Table extends AbstractContainerTag
 {
   protected $_tag = 'table';
 }
