@@ -10,7 +10,7 @@ class AbstractContainerTag extends HtmlTag
 
   public static function create(...$content)
   {
-    $tag = new static($content);
+    $tag = new static(...$content);
     return $tag;
   }
 
