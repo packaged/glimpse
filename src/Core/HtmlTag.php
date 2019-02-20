@@ -307,21 +307,29 @@ abstract class HtmlTag implements ISafeHtmlProducer
     return (array)Arrays::value($this->_attributes, 'class', []);
   }
 
+  protected function _prepareForProduce(): HtmlTag
+  {
+    //Make any changes to the tag just before building the html
+    return $this;
+  }
+
   /**
    * @return SafeHtml
    * @throws \Exception
    */
   public function produceSafeHTML(): SafeHtml
   {
+    $ele = $this->_prepareForProduce();
+
     // If the `href` attribute is present:
     //   - make sure it is not a "javascript:" URI. We never permit these.
     //   - if the tag is an `<a>` and the link is to some foreign resource,
     //     add `rel="nofollow"` by default.
-    if(!empty($this->_attributes['href']))
+    if(!empty($ele->_attributes['href']))
     {
 
       // This might be a URI object, so cast it to a string.
-      $href = (string)$this->_attributes['href'];
+      $href = (string)$ele->_attributes['href'];
 
       if(isset($href[0]))
       {
@@ -382,7 +390,7 @@ abstract class HtmlTag implements ISafeHtmlProducer
     ];
 
     $attrString = '';
-    foreach($this->_attributes as $k => $v)
+    foreach($ele->_attributes as $k => $v)
     {
       if($v === null || $v === true)
       {
@@ -394,12 +402,12 @@ abstract class HtmlTag implements ISafeHtmlProducer
       }
     }
 
-    $content = $this->_getContentForRender();
+    $content = $ele->_getContentForRender();
     if(empty($content))
     {
-      if(isset($selfClosingTags[$this->_tag]))
+      if(isset($selfClosingTags[$ele->_tag]))
       {
-        return new SafeHtml('<' . $this->_tag . $attrString . ' />');
+        return new SafeHtml('<' . $ele->_tag . $attrString . ' />');
       }
       $content = '';
     }
@@ -408,7 +416,7 @@ abstract class HtmlTag implements ISafeHtmlProducer
       $content = SafeHtml::escape($content, '');
     }
 
-    return new SafeHtml('<' . $this->_tag . $attrString . '>' . $content . '</' . $this->_tag . '>');
+    return new SafeHtml('<' . $ele->_tag . $attrString . '>' . $content . '</' . $ele->_tag . '>');
   }
 
   protected function _getContentForRender()
