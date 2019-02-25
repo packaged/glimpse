@@ -1,9 +1,9 @@
 <?php
 namespace Packaged\Glimpse\Tags\Lists;
 
-use Packaged\Glimpse\Core\HtmlTag;
+use Packaged\Glimpse\Core\AbstractContainerTag;
 
-abstract class AbstractList extends HtmlTag
+abstract class AbstractList extends AbstractContainerTag
 {
   public function addItem($content)
   {
