@@ -5,6 +5,7 @@ class AbstractContainerTag extends HtmlTag
 {
   public function __construct(...$content)
   {
+    parent::__construct();
     $this->setContent($content);
   }
 
@@ -14,4 +15,24 @@ class AbstractContainerTag extends HtmlTag
     return $tag;
   }
 
+  public static function collection(array $items)
+  {
+    $return = [];
+    foreach($items as $item)
+    {
+      if($item instanceof static)
+      {
+        $return[] = $item;
+      }
+      else if(is_array($item))
+      {
+        $return[] = new static(...$item);
+      }
+      else
+      {
+        $return[] = new static($item);
+      }
+    }
+    return $return;
+  }
 }

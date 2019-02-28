@@ -2,9 +2,9 @@
 namespace Packaged\Glimpse\Tags\Text;
 
 use InvalidArgumentException;
-use Packaged\Glimpse\Tags\AbstractContentTag;
+use Packaged\Glimpse\Core\HtmlTag;
 
-class BiDirectionalText extends AbstractContentTag
+class BiDirectionalText extends HtmlTag
 {
   const DIR_LTR = 'ltr';
   const DIR_RTL = 'rtl';
@@ -13,13 +13,15 @@ class BiDirectionalText extends AbstractContentTag
 
   public function __construct($content = null)
   {
-    parent::__construct($content);
+    parent::__construct();
+    $this->setContent($content);
     $this->setDirection(self::DIR_LTR);
   }
 
   public static function create($content = '', $direction = self::DIR_LTR)
   {
-    $ele = parent::create($content);
+    $ele = parent::create();
+    $ele->setContent($content);
     $ele->setAttribute('dir', $direction);
     return $ele;
   }

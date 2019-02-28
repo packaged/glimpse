@@ -1,15 +1,16 @@
 <?php
 namespace Packaged\Glimpse\Tags\Text;
 
-use Packaged\Glimpse\Tags\AbstractContentTag;
+use Packaged\Glimpse\Core\HtmlTag;
 
-class Abbreviation extends AbstractContentTag
+class Abbreviation extends HtmlTag
 {
   protected $_tag = 'abbr';
 
   public function __construct($abbreviation = null, $meaning = null)
   {
-    parent::__construct($abbreviation);
+    parent::__construct();
+    $this->setContent($abbreviation);
     $this->setAttribute('title', $meaning);
   }
 

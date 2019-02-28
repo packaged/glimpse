@@ -1,9 +1,9 @@
 <?php
 namespace Packaged\Glimpse\Tags\Text;
 
-use Packaged\Glimpse\Tags\AbstractContentTag;
+use Packaged\Glimpse\Core\AbstractContainerTag;
 
-class KeyboardInput extends AbstractContentTag
+class KeyboardInput extends AbstractContainerTag
 {
   protected $_tag = 'kbd';
 }

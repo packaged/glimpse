@@ -1,9 +1,9 @@
 <?php
 namespace Packaged\Glimpse\Tags\Text;
 
-use Packaged\Glimpse\Tags\AbstractContentTag;
+use Packaged\Glimpse\Core\AbstractContainerTag;
 
-class StrongText extends AbstractContentTag
+class StrongText extends AbstractContainerTag
 {
   protected $_tag = 'strong';
 }

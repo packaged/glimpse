@@ -1,9 +1,9 @@
 <?php
 namespace Packaged\Glimpse\Tags\Form;
 
-use Packaged\Glimpse\Tags\AbstractContentTag;
+use Packaged\Glimpse\Core\AbstractContainerTag;
 
-abstract class AbstractFormElementTag extends AbstractContentTag
+abstract class AbstractFormElementTag extends AbstractContainerTag
 {
   public function setName($name)
   {

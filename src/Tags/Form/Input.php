@@ -30,7 +30,8 @@ class Input extends AbstractFormElementTag
 
   public function __construct($content = null)
   {
-    parent::__construct($content);
+    parent::__construct();
+    $this->setContent($content);
     $this->setType(self::TYPE_TEXT);
   }
 

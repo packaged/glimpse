@@ -1,9 +1,9 @@
 <?php
 namespace Packaged\Glimpse\Tags\Text;
 
-use Packaged\Glimpse\Tags\AbstractContentTag;
+use Packaged\Glimpse\Core\AbstractContainerTag;
 
-class Variable extends AbstractContentTag
+class Variable extends AbstractContainerTag
 {
   protected $_tag = 'var';
 }

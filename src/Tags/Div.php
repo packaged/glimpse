@@ -1,7 +1,9 @@
 <?php
 namespace Packaged\Glimpse\Tags;
 
-class Div extends AbstractContentTag
+use Packaged\Glimpse\Core\AbstractContainerTag;
+
+class Div extends AbstractContainerTag
 {
   protected $_tag = 'div';
 }

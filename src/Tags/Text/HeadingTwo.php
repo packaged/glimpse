@@ -1,9 +1,9 @@
 <?php
 namespace Packaged\Glimpse\Tags\Text;
 
-use Packaged\Glimpse\Tags\AbstractContentTag;
+use Packaged\Glimpse\Core\AbstractContainerTag;
 
-class HeadingTwo extends AbstractContentTag
+class HeadingTwo extends AbstractContainerTag
 {
   protected $_tag = 'h2';
 }

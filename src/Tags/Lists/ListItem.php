@@ -1,9 +1,9 @@
 <?php
 namespace Packaged\Glimpse\Tags\Lists;
 
-use Packaged\Glimpse\Tags\AbstractContentTag;
+use Packaged\Glimpse\Core\AbstractContainerTag;
 
-class ListItem extends AbstractContentTag
+class ListItem extends AbstractContainerTag
 {
   protected $_tag = 'li';
 }

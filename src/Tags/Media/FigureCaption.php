@@ -1,9 +1,9 @@
 <?php
 namespace Packaged\Glimpse\Tags\Media;
 
-use Packaged\Glimpse\Tags\AbstractContentTag;
+use Packaged\Glimpse\Core\AbstractContainerTag;
 
-class FigureCaption extends AbstractContentTag
+class FigureCaption extends AbstractContainerTag
 {
   protected $_tag = 'figcaption';
 }

@@ -1,9 +1,9 @@
 <?php
 namespace Packaged\Glimpse\Tags\Layout;
 
-use Packaged\Glimpse\Tags\AbstractContentTag;
+use Packaged\Glimpse\Core\AbstractContainerTag;
 
-class Article extends AbstractContentTag
+class Article extends AbstractContainerTag
 {
   protected $_tag = 'article';
 }

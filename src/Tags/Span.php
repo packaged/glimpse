@@ -1,7 +1,9 @@
 <?php
 namespace Packaged\Glimpse\Tags;
 
-class Span extends AbstractContentTag
+use Packaged\Glimpse\Core\AbstractContainerTag;
+
+class Span extends AbstractContainerTag
 {
   protected $_tag = 'span';
 }

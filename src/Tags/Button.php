@@ -1,7 +1,9 @@
 <?php
 namespace Packaged\Glimpse\Tags;
 
-class Button extends AbstractContentTag
+use Packaged\Glimpse\Core\AbstractContainerTag;
+
+class Button extends AbstractContainerTag
 {
   protected $_tag = 'button';
 }

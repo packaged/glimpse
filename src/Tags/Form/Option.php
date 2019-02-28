@@ -9,11 +9,12 @@ class Option extends AbstractFormElementTag
 
   public function __construct($content = null, $value = null)
   {
+    parent::__construct();
     if($value !== null)
     {
       $this->setAttribute('value', $value);
     }
-    parent::__construct($content);
+    $this->setContent($content);
   }
 
   public static function collection(array $items)
