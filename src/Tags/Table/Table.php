@@ -14,7 +14,7 @@ class Table extends AbstractContainerTag
   /**
    * @param mixed|TableHeading ...$headings
    *
-   * @return Table
+   * @return $this
    */
   public function addHeaderRow(...$headings)
   {
@@ -29,7 +29,7 @@ class Table extends AbstractContainerTag
   /**
    * @param mixed|TableCell ...$row
    *
-   * @return Table
+   * @return $this
    */
   public function addRow(...$row)
   {
@@ -40,7 +40,7 @@ class Table extends AbstractContainerTag
   /**
    * @param mixed|TableRow[] ...$rows
    *
-   * @return Table
+   * @return $this
    */
   public function addRows(...$rows)
   {
@@ -54,7 +54,7 @@ class Table extends AbstractContainerTag
   /**
    * @param mixed|TableCell ...$row
    *
-   * @return Table
+   * @return $this
    */
   public function addFooterRow(...$row)
   {
