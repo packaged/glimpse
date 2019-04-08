@@ -8,7 +8,7 @@ class Input extends AbstractFormElementTag
   const TYPE_COLOR = 'color';
   const TYPE_DATE = 'date';
   const TYPE_DATETIME_LOCAL = 'datetime-local';
-  const TYPE_EMAIL = 'email ';
+  const TYPE_EMAIL = 'email';
   const TYPE_FILE = 'file';
   const TYPE_HIDDEN = 'hidden';
   const TYPE_IMAGE = 'image';
