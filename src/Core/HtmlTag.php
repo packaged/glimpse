@@ -61,6 +61,26 @@ abstract class HtmlTag implements ISafeHtmlProducer
   }
 
   /**
+   * Array of attributes for the tag
+   *
+   * @param array $attributes
+   * @param bool  $overwriteIfExists
+   *
+   * @return $this
+   */
+  public function addAttributes(array $attributes, bool $overwriteIfExists = false)
+  {
+    foreach($attributes as $k => $v)
+    {
+      if($overwriteIfExists || !array_key_exists($k, $this->_attributes))
+      {
+        $this->_attributes[$k] = $v;
+      }
+    }
+    return $this;
+  }
+
+  /**
    * @param string $key
    *
    * @return $this

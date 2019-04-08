@@ -31,6 +31,12 @@ class HtmlTagTest extends TestCase
     $this->assertSame($attr, $tag->getAttributes());
     $this->assertEquals('four', $tag->getId());
 
+    $tag->addAttributes(['test' => 'no'], false);
+    $this->assertEquals('ran', $tag->getAttribute('test'));
+
+    $tag->addAttributes(['test' => 'yes'], true);
+    $this->assertEquals('yes', $tag->getAttribute('test'));
+
     $tag->setContent('testing');
     $this->assertEquals('testing', $tag->getContent(false));
     $this->assertEquals(['testing'], $tag->getContent());
