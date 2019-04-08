@@ -74,7 +74,7 @@ abstract class HtmlTag implements ISafeHtmlProducer
     {
       if($overwriteIfExists || !array_key_exists($k, $this->_attributes))
       {
-        $this->_attributes[$k] = $v;
+        $this->setOrRemoveAttribute($k, $v);
       }
     }
     return $this;
