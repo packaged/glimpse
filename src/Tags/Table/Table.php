@@ -2,7 +2,7 @@
 namespace Packaged\Glimpse\Tags\Table;
 
 use Packaged\Glimpse\Core\AbstractContainerTag;
-use Packaged\Glimpse\Core\HtmlTag;
+use Packaged\Ui\Html\HtmlElement;
 
 class Table extends AbstractContainerTag
 {
@@ -66,7 +66,7 @@ class Table extends AbstractContainerTag
     return $this;
   }
 
-  protected function _prepareForProduce(): HtmlTag
+  protected function _prepareForProduce(): HtmlElement
   {
     $table = parent::_prepareForProduce();
 
