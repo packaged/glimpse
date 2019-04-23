@@ -11,8 +11,8 @@
   "require": {
     "php": ">=7.1",
     "packaged/helpers": "^1.0||^2.0",
-    "packaged/safehtml": "~2.0",
-    "packaged/ui": "^0.4"
+    "packaged/safehtml": "^2.0",
+    "packaged/ui": "^1.0"
   },
   "require-dev": {
     "phpunit/phpunit": "~7.5"
