@@ -6,7 +6,6 @@ use Packaged\Glimpse\Core\HtmlTag;
 class Label extends HtmlTag
 {
   protected $_tag = 'label';
-  protected $_for;
 
   public static function create($content = '', $for = null)
   {
@@ -22,7 +21,7 @@ class Label extends HtmlTag
    */
   public function getFor()
   {
-    return $this->_for;
+    return $this->getAttribute('for');
   }
 
   /**
@@ -32,8 +31,7 @@ class Label extends HtmlTag
    */
   public function setFor($for)
   {
-    $this->_for = $for;
-    $this->setAttribute('for', $this->_for);
+    $this->setAttribute('for', $for, true);
     return $this;
   }
 }
