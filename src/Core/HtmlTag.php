@@ -56,7 +56,11 @@ abstract class HtmlTag extends HtmlElement
   {
     if($asArray)
     {
-      return (array)$this->_content;
+      if($this->_content === '')
+      {
+        return [];
+      }
+      return is_array($this->_content) ? $this->_content : [$this->_content];
     }
     else if(is_array($this->_content))
     {
