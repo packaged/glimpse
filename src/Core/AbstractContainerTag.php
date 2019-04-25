@@ -6,7 +6,7 @@ class AbstractContainerTag extends HtmlTag
   public function __construct(...$content)
   {
     parent::__construct();
-    $this->setContent($content);
+    $this->setContent(func_num_args() == 1 ? $content[0] : $content);
   }
 
   public static function create(...$content)
