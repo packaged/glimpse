@@ -7,11 +7,6 @@ class Link extends HtmlTag
 {
   protected $_tag = 'a';
 
-  public static function create($uri = null, $content = null)
-  {
-    return new static($uri, $content);
-  }
-
   public function __construct($uri = null, $content = null)
   {
     parent::__construct();
@@ -34,16 +29,9 @@ class Link extends HtmlTag
     return $this->setAttribute('href', $uri);
   }
 
-  /**
-   * The target attribute specifies where to open the linked document.
-   *
-   * @param string $target
-   *
-   * @return $this
-   */
-  public function setTarget($target = '_blank')
+  public static function create($uri = null, $content = null)
   {
-    return $this->setAttribute('target', $target);
+    return new static($uri, $content);
   }
 
   /**
@@ -54,6 +42,18 @@ class Link extends HtmlTag
   public function forNewWindow()
   {
     return $this->setTarget('_blank');
+  }
+
+  /**
+   * The target attribute specifies where to open the linked document.
+   *
+   * @param string $target
+   *
+   * @return $this
+   */
+  public function setTarget($target = '_blank')
+  {
+    return $this->setAttribute('target', $target);
   }
 
   /**

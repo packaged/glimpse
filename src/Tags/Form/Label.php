@@ -17,14 +17,6 @@ class Label extends HtmlTag
   }
 
   /**
-   * @return mixed
-   */
-  public function getFor()
-  {
-    return $this->getAttribute('for');
-  }
-
-  /**
    * @param mixed $for
    *
    * @return Label
@@ -33,5 +25,13 @@ class Label extends HtmlTag
   {
     $this->setAttribute('for', $for, true);
     return $this;
+  }
+
+  /**
+   * @return mixed
+   */
+  public function getFor()
+  {
+    return $this->getAttribute('for');
   }
 }

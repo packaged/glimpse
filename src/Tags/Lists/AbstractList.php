@@ -5,6 +5,15 @@ use Packaged\Glimpse\Core\AbstractContainerTag;
 
 abstract class AbstractList extends AbstractContainerTag
 {
+  public function addItems(array $items)
+  {
+    foreach($items as $item)
+    {
+      $this->addItem($item);
+    }
+    return $this;
+  }
+
   public function addItem($content)
   {
     if($content instanceof ListItem)
@@ -14,15 +23,6 @@ abstract class AbstractList extends AbstractContainerTag
     else
     {
       $this->appendContent(ListItem::create($content));
-    }
-    return $this;
-  }
-
-  public function addItems(array $items)
-  {
-    foreach($items as $item)
-    {
-      $this->addItem($item);
     }
     return $this;
   }

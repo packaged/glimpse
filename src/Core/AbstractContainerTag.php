@@ -1,6 +1,9 @@
 <?php
 namespace Packaged\Glimpse\Core;
 
+use function func_num_args;
+use function is_array;
+
 class AbstractContainerTag extends HtmlTag
 {
   public function __construct(...$content)

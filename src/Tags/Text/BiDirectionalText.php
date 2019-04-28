@@ -3,6 +3,7 @@ namespace Packaged\Glimpse\Tags\Text;
 
 use InvalidArgumentException;
 use Packaged\Glimpse\Core\HtmlTag;
+use function in_array;
 
 class BiDirectionalText extends HtmlTag
 {
@@ -18,14 +19,6 @@ class BiDirectionalText extends HtmlTag
     $this->setDirection(self::DIR_LTR);
   }
 
-  public static function create($content = '', $direction = self::DIR_LTR)
-  {
-    $ele = parent::create();
-    $ele->setContent($content);
-    $ele->setAttribute('dir', $direction);
-    return $ele;
-  }
-
   public function setDirection($direction)
   {
     if(in_array($direction, [self::DIR_RTL, self::DIR_LTR], true))
@@ -33,6 +26,14 @@ class BiDirectionalText extends HtmlTag
       return $this->setAttribute('dir', $direction);
     }
     throw new InvalidArgumentException("$direction is not a valid direction.");
+  }
+
+  public static function create($content = '', $direction = self::DIR_LTR)
+  {
+    $ele = parent::create();
+    $ele->setContent($content);
+    $ele->setAttribute('dir', $direction);
+    return $ele;
   }
 
   public function getDirection()

@@ -2,6 +2,9 @@
 namespace Packaged\Glimpse\Core;
 
 use Packaged\Ui\Html\HtmlElement;
+use function array_unshift;
+use function implode;
+use function is_array;
 
 /**
  * Render a HTML tag in a way that treats user content as unsafe by default.
@@ -35,41 +38,6 @@ abstract class HtmlTag extends HtmlElement
   }
 
   /**
-   * Content to put in the tag.
-   *
-   * @param $content
-   *
-   * @return $this
-   */
-  public function setContent($content)
-  {
-    $this->_content = $content;
-    return $this;
-  }
-
-  /**
-   * @param bool $asArray
-   *
-   * @return array|string
-   */
-  public function getContent($asArray = true)
-  {
-    if($asArray)
-    {
-      if($this->_content === '')
-      {
-        return [];
-      }
-      return is_array($this->_content) ? $this->_content : [$this->_content];
-    }
-    else if(is_array($this->_content))
-    {
-      return implode('', $this->_content);
-    }
-    return $this->_content;
-  }
-
-  /**
    * @param $content
    *
    * @return $this
@@ -99,17 +67,6 @@ abstract class HtmlTag extends HtmlElement
     return $this;
   }
 
-  protected function _prepareForProduce(): HtmlElement
-  {
-    //Make any changes to the tag just before building the html
-    return $this;
-  }
-
-  protected function _getContentForRender()
-  {
-    return $this->_content;
-  }
-
   public function asHtml()
   {
     return (string)$this->render();
@@ -126,5 +83,51 @@ abstract class HtmlTag extends HtmlElement
     $this->setAttributes($tag->getAttributes());
     $this->addClass($tag->getClasses());
     return $this;
+  }
+
+  /**
+   * @param bool $asArray
+   *
+   * @return array|string
+   */
+  public function getContent($asArray = true)
+  {
+    if($asArray)
+    {
+      if($this->_content === '')
+      {
+        return [];
+      }
+      return is_array($this->_content) ? $this->_content : [$this->_content];
+    }
+    else if(is_array($this->_content))
+    {
+      return implode('', $this->_content);
+    }
+    return $this->_content;
+  }
+
+  /**
+   * Content to put in the tag.
+   *
+   * @param $content
+   *
+   * @return $this
+   */
+  public function setContent($content)
+  {
+    $this->_content = $content;
+    return $this;
+  }
+
+  protected function _prepareForProduce(): HtmlElement
+  {
+    //Make any changes to the tag just before building the html
+    return $this;
+  }
+
+  protected function _getContentForRender()
+  {
+    return $this->_content;
   }
 }

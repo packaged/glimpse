@@ -27,17 +27,6 @@ class Table extends AbstractContainerTag
   }
 
   /**
-   * @param mixed|TableCell ...$row
-   *
-   * @return $this
-   */
-  public function addRow(...$row)
-  {
-    $this->appendContent(TableRow::create(TableCell::collection($row)));
-    return $this;
-  }
-
-  /**
    * @param mixed|TableRow[] ...$rows
    *
    * @return $this
@@ -48,6 +37,17 @@ class Table extends AbstractContainerTag
     {
       $this->addRow(...$row);
     }
+    return $this;
+  }
+
+  /**
+   * @param mixed|TableCell ...$row
+   *
+   * @return $this
+   */
+  public function addRow(...$row)
+  {
+    $this->appendContent(TableRow::create(TableCell::collection($row)));
     return $this;
   }
 
