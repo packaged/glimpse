@@ -3,37 +3,37 @@ Glimpse
 
 HTML Markup Helper
 
-##Usage
+## Usage
 
    use Packaged\Glimpse\Core\HtmlTag;
 
-####Code
-  
+#### Code
+
     echo HtmlTag::createTag('br');
-    
-####Output
+
+#### Output
 
     <br />
 
-####Code
-  
+#### Code
+
     echo HtmlTag::createTag('img',['src' => 'x.gif']);
-    
-####Output
+
+#### Output
 
     <img src="x.gif" />
 
 
-####Code
-  
+#### Code
+
     echo HtmlTag::create()
       ->setTag('div')
       ->setId('dog-tag')
       ->addClass('dogs', 'tag',['yellow','red'])
       ->setAttribute('title', 'Dog Tags')
       ->setContent('Hey There<a href="">');
-    
-####Output
+
+#### Output
 
     <div id="dog-tag" class="dogs tag yellow red" title="Dog Tags">Hey There&lt;a href=&quot;&quot;&gt;</div>
 
