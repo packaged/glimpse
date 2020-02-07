@@ -44,6 +44,16 @@ class Link extends HtmlTag
     return $this->setTarget('_blank');
   }
 
+  public function relNoReferrer()
+  {
+    return $this->setAttribute('rel', 'noreferrer');
+  }
+
+  public function relNoOpener()
+  {
+    return $this->setAttribute('rel', 'noopener');
+  }
+
   /**
    * The target attribute specifies where to open the linked document.
    *
@@ -53,6 +63,10 @@ class Link extends HtmlTag
    */
   public function setTarget($target = '_blank')
   {
+    if($target == '_blank')
+    {
+      $this->relNoOpener();
+    }
     return $this->setAttribute('target', $target);
   }
 
